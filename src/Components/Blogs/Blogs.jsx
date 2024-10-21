@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
+import Blog from '../Blog/Blog'
 
-export default function Blogs() {
+export default function Blogs({ handleBookMark }) {
     const [blogs ,setblogs] = useState([])
     useEffect(()=>{
         fetch('blogs.json')
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setblogs(data))
     },[])
   return (
     <div className='w-2/3'>
-        <h1>Blogs:{blogs}</h1>
+        <h1>Blogs:{blogs.length}</h1>
+        {
+          blogs.map(blog=> <Blog 
+            key={blog.id} 
+            blog={blog}
+            handleBookMark={handleBookMark}
+            >
+            </Blog>)
+        }
     </div>
   )
 }
