@@ -2,11 +2,11 @@
 import { IoBookmarkOutline } from "react-icons/io5";
 
 
-export default function Blog({blog,handleBookMark}) {
+export default function Blog({blog,handleBookMark,handlaeTime}) {
   // console.log(blog)
   const {cover,title,author_img,author,posted_date,reading_time,hashtags} = blog
   return (
-    <div className="mb-20">
+    <div className="mb-20 space-y-3">
         <div>
             <img className="w-full" src={cover} alt="" />
             <div className="flex justify-between mt-2 p-2">
@@ -34,6 +34,9 @@ export default function Blog({blog,handleBookMark}) {
             hashtags.map((hash,idx)=> <span key={idx} className="ml-5 pt-3"><a href="">#{hash}</a></span>)
           }
         </p>
+        <p 
+        onClick={()=>handlaeTime(reading_time)}
+        className="text-xl text-purple-800 underline">Mark as read</p>
     </div>
   )
 }

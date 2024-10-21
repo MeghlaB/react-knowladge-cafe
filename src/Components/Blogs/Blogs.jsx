@@ -1,7 +1,7 @@
 import  { useEffect, useState } from 'react'
 import Blog from '../Blog/Blog'
 
-export default function Blogs({ handleBookMark }) {
+export default function Blogs({ handleBookMark ,handlaeTime }) {
     const [blogs ,setblogs] = useState([])
     useEffect(()=>{
         fetch('blogs.json')
@@ -16,6 +16,7 @@ export default function Blogs({ handleBookMark }) {
             key={blog.id} 
             blog={blog}
             handleBookMark={handleBookMark}
+            handlaeTime={handlaeTime}
             >
             </Blog>)
         }
